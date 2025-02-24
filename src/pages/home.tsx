@@ -1,16 +1,42 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { SillyHero } from "@/components/silly-hero";
+import { SillyCard } from "@/components/silly-card";
+import { useToast } from "@/components/ui/use-toast";
 
-const Home = () => {
+export function Home() {
+  const { toast } = useToast();
+
+  const handleHeroAction = () => {
+    toast({
+      title: "Ура! 🎉",
+      description: "Вы нажали на самую глупую кнопку в мире!",
+    });
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">
-          Start building your amazing project here!
-        </p>
+    <div className="space-y-8">
+      <SillyHero
+        title="Добро пожаловать на самый глупый сайт в мире!"
+        description="Здесь вы найдете самые нелепые вещи, которые только можно представить. Нажимайте на все кнопки, они делают забавные штуки!"
+        onActionClick={handleHeroAction}
+      />
+
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <SillyCard
+          title="Глупая карточка"
+          description="Эта карточка такая глупая, что даже не знает, что она карточка! Нажмите на кнопку, чтобы она затряслась от смеха."
+          icon="baby"
+        />
+        <SillyCard
+          title="Очень важная карточка"
+          description="Эта карточка думает, что она очень важная. Но на самом деле она просто притворяется! Нажмите на кнопку, чтобы разоблачить её."
+          icon="crown"
+        />
+        <SillyCard
+          title="Звёздная карточка"
+          description="Эта карточка мечтает стать звездой. Помогите её мечте сбыться, нажав на кнопку! Спойлер: ничего не произойдет."
+          icon="star"
+        />
       </div>
     </div>
   );
-};
-
-export { Home };
+}
